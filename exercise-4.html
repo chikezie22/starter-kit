@@ -21,7 +21,7 @@
 
     <style>
       :root {
-        --def-transition-duration: 0.2s;
+        --def-transition-duration: 0.3s;
       }
 
       html {
@@ -83,10 +83,6 @@
 
       .has-submenu:hover ul {
         display: block;
-        opacity: 1;
-        @starting-style {
-          opacity: 0;
-        }
       }
 
       .has-submenu ul {
@@ -96,10 +92,6 @@
         background-color: #212224;
         border-radius: 0.5rem;
         padding: 0.5rem;
-        display: none;
-        opacity: 0;
-        transition: opacity 0.5s linear, display 0.5s linear;
-        transition-behavior: allow-discrete;
       }
 
       .has-submenu ul a {
@@ -145,6 +137,36 @@
       }
 
       /* Air */
+
+      nav ul a {
+        transition-property: color;
+      }
+
+      .has-submenu::after {
+        transition-property: opacity;
+      }
+
+      .has-submenu ul {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(-1rem);
+        transition-property: opacity, visibility, transform;
+        transition-behavior: allow-discrete;
+      }
+
+      .has-submenu:hover ul {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+      }
+
+      nav ul a,
+      .has-submenu::after,
+      .has-submenu ul {
+        transition-duration: var(--def-transition-duration);
+        transition-timing-function: ease-in-out;
+      }
     </style>
   </head>
   <body>
