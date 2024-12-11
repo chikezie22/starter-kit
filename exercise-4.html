@@ -155,15 +155,29 @@
         transition-behavior: allow-discrete;
       }
 
+      .has-submenu ul a::after {
+        transform: rotate(0);
+        transition-property: opacity, transform;
+      }
+
+      .has-submenu ul a:hover::after {
+        transform: rotate(360deg); /* Rotate 360 degrees on hover */
+      }
+
       .has-submenu:hover ul {
         opacity: 1;
         visibility: visible;
         transform: translateX(0);
       }
+      .has-submenu ul a {
+        transition-property: background-color, padding;
+      }
 
       nav ul a,
       .has-submenu::after,
-      .has-submenu ul {
+      .has-submenu ul,
+      .has-submenu ul a,
+      .has-submenu ul a::after {
         transition-duration: var(--def-transition-duration);
         transition-timing-function: ease-in-out;
       }
