@@ -259,7 +259,13 @@
       /* - https://elements.envato.com/weather-icon-pack-3UHW3R3 */
 
       .accordion--item {
-        transition-property: background-size, padding, flex-basis;
+        transform: perspective(0) rotate3d(0);
+        transition-property: background-size, padding, flex-basis, transform;
+      }
+
+      .accordion--item.opened {
+        transform: perspective(2000px) rotate3d(0, 1, 0.5, 6.2832rad);
+        transition-property: transform;
       }
 
       .accordion--item.opened .bottom-temp {
@@ -291,10 +297,20 @@
         transform: translate3d(0, 0, 0);
       }
 
-      .accordion--item,
+      .date li:nth-child(2) {
+        transition-property: color;
+      }
+
+      .accordion--item.opened,
+      .accordion--item {
+        transition-duration: 1s;
+        transition-timing-function: ease-in-out;
+      }
+
       .bottom-temp,
       .readings,
-      .temp {
+      .temp,
+      .date li:nth-child(2) {
         transition-duration: var(--def-transition-duration);
         transition-timing-function: ease-in-out;
       }
