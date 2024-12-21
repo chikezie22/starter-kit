@@ -347,11 +347,12 @@
       //   gsap.registerPlugin(ScrollTrigger);
       const entries = document.querySelectorAll(".entry");
       // for each entries there are 3 entries in our code
+
+      let tl = gsap.timeline({});
+
       entries.forEach((entry) => {
         let entryMedia = entry.querySelector(".entry__media");
         let entryMeta = entry.querySelector(".entry__meta");
-
-        let tl = gsap.timeline({});
 
         tl.fromTo(
           entryMedia,
