@@ -149,17 +149,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .btn-fill {
-        position: absolute;
-        width: 150%;
-        height: 200%;
-        border-radius: 50%;
-        top: -50%;
-        left: -25%;
       }
     </style>
   </head>
@@ -196,7 +185,6 @@
 
       <!-- Air -->
       <button class="mageneto">
-        <div class="btn-fill"></div>
         <span class="text">Our Work</span>
       </button>
       <div class="debugger"></div>
@@ -208,16 +196,17 @@
     <script>
       const mageneto = document.querySelector(".mageneto");
       const text = document.querySelector(".text");
-      const magnetoTextStrength = 80;
-      const magnetoButtonStrength = 40;
 
       mageneto.addEventListener("mousemove", (e) => {
-        const { clientX, clientY } = e; // clientX is the horizontal coordinate of the mouse pointer relative to the viewport
-        const { offsetWidth, offsetHeight } = mageneto; // offsetWidth is the width of the element including borders and padding
+        const { clientX, clientY } = e;
+        console.log(clientX, clientY);
+        const { offsetWidth, offsetHeight } = mageneto;
 
         const x = clientX - mageneto.offsetLeft;
         const y = clientY - mageneto.offsetTop;
-        console.log(x);
+
+        const magnetoButtonStrength = 40;
+        const magnetoTextStrength = 80;
         const xStrength = (x / offsetWidth - 0.5) * magnetoButtonStrength;
 
         const yStrength = (y / offsetHeight - 0.5) * magnetoButtonStrength;
@@ -256,6 +245,5 @@
         });
       });
     </script>
-    <!-- End Air -->
   </body>
 </html>
